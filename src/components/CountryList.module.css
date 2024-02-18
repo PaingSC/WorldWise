@@ -4,9 +4,15 @@
   list-style: none;
   overflow-y: scroll;
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: start;
   gap: 1.6rem;
+}
+
+.countryList::-webkit-scrollbar {
+  display: none;
 }
