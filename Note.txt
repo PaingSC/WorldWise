@@ -28,3 +28,24 @@ I. Using React Router
                 <NavLink to="/path-name2">Component2</NavLink>
                 <NavLink to="/path-name3">Component3</NavLink>
 
+        4)  Index Route
+                a)  Insert "index" in the "Route" component and.
+                b)  set the "TargetComponent" to the element.
+                <BrowserRouter>
+                    <Routes>
+                        <Route index element={<TergetComponent />} />
+                    </Routes>
+                </BrowserRouter>
+
+        5)  Nested Routes
+                a)  Insert nested "Routes" in the opening and closing tag of "parent Route"
+                b)  set the "TargetComponent" in element
+                c)  Use "<Outlet />" component to somewhere insind the "parent component" or
+                    the "child components"
+                <Route path="app" element={<AppLayout />}>
+                    <Route index element={<p>LIST</p>} />
+                    <Route path="cities" element={<p>List of cities</p>} />
+                    <Route path="countries" element={<p>Countires</p>} />
+                    <Route path="form" element={<p>Form</p>} />
+                </Route>
+
