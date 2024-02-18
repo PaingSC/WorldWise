@@ -11,7 +11,6 @@ function CityList({ cities, isLoading }) {
         message={"Add your first city by clicking on a city on the map."}
       />
     );
-  cities.map((city) => console.log(city));
   return (
     <ul className={styles.cityList}>
       {cities.map((city) => (
