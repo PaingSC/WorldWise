@@ -1,0 +1,30 @@
+I. Using React Router
+    1. Usage
+        1)  import { BrowserRouter, Routes, Route } from "react-router-dom" in root component.
+
+        2)  Implement "Routes" and main pages in root component
+            <BrowserRouter>
+                <Routers>
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="path-name1" element={<Component1 />} />
+                    <Route path="path-name2" element={<Component2 />} /> 
+                    <Route path="path-name3" element={<Component3 />} />
+                    <Route path="*" element={<PageNotFound />} />
+                </Routers>
+            </BrowserRouter>
+            (Note: Don't forget to import Components(main pages))
+
+        3)  Link between Routes with Link and NavLink
+            a)  Import "Link" or NavLink from "react-router-dom" 
+                <Link to="/">Homepage</Link>
+                <Link to="/path-name1">Component1</Link>
+                <Link to="/path-name2">Component2</Link>
+                <Link to="/path-name3">Component3</Link>
+
+                (OR)
+
+                <NavLink to="/">Homepage</NavLink>
+                <NavLink to="/path-name1">Component1</NavLink>
+                <NavLink to="/path-name2">Component2</NavLink>
+                <NavLink to="/path-name3">Component3</NavLink>
+
