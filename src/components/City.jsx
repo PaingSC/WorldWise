@@ -1,14 +1,25 @@
 // import styles from "./City.module.css";
 
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 function City() {
   const x = useParams();
-  console.log(x);
   const { id } = x;
-  console.log(id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(setSearchParams);
 
-  return <h1>Current City id = {id}</h1>;
+  const lat = searchParams.get("lat");
+  const lng = searchParams.get("lng");
+  console.log(lat, lng);
+
+  return (
+    <>
+      <h1>Current City id = {id}</h1>;
+      <h1>
+        Position: {lat}, {lng}
+      </h1>
+    </>
+  );
   // TEMP DATA
   // const currentCity = {
   //   cityName: "Lisbon",
