@@ -81,3 +81,18 @@ I. Using React Router
                         Use "useSearchParams()" to read "state"(data)
                         "useSearchParams" is the custom hook supported by "react router"
 
+                        Then, for getting the lat and lng values,
+                            const lat = searchParams.get("lat");
+                            const lng = searchParams.get("lng");
+
+                        For the setter function of useSearchParams hook,
+                        Pass an object for the key and value for each of the individual param
+                            setSearchParams({lat: 23, lng: 87})
+
+                c)) Programatic Navigation (useNavigate: a custom Hook)
+                        Programatic Navigation basically means to move to a new URL without the 
+                    user having to click on any link. A common use case of this behavior is right
+                    after summiting a form.
+
+                d)) the "type" prop
+
