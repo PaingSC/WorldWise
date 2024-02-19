@@ -53,7 +53,15 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <Button type={"primary"}>Add</Button>
+        <Button
+          type={"primary"}
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(-1);
+          }}
+        >
+          Add
+        </Button>
         <Button
           type={"back"}
           onClick={(e) => {

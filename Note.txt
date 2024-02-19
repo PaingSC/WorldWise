@@ -40,8 +40,8 @@ I. Using React Router
         5)  Nested Routes
                 a)  Insert nested "Routes" in the opening and closing tag of "parent Route"
                 b)  set the "TargetComponent" in element
-                c)  Use "<Outlet />" component to somewhere insind the "parent component" or
-                    the "child components"
+                c)  Use "<Outlet />" component to somewhere inside the "parent component" or
+                    some other components that are the chldren of the parent route component
                 <Route path="app" element={<AppLayout />}>
                     <Route index element={<p>LIST</p>} />
                     <Route path="cities" element={<p>List of cities</p>} />
@@ -94,5 +94,17 @@ I. Using React Router
                     user having to click on any link. A common use case of this behavior is right
                     after summiting a form.
 
-                d)) the "type" prop
+        7)  The useNavigate "hook"
+                The useNavigate hook returns a fuction usually call as "navigate".
+            Calling the function as navigate(-1) go to the previous route and navigate(2) to the Forward page.
+            Calling the function as navigate("form") add "/form" query string to the current route URL.
+
+        8)  The "Navigate" component
+                The "<Navigate />" component can be use to route Programatic navigation decalaratively.
+            But the "useNavigate" function define the route imperatively. With the <Navigate /> component, the "replace"
+            keyword replaces the current element in the "history stack".
+
+        9)  The "type" prop
+                The "type" prop is usually used to set the variations or types of the component.
+
 
