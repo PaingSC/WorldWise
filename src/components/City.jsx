@@ -1,71 +1,66 @@
-// import styles from "./City.module.css";
+import styles from "./City.module.css";
 
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useCities } from "../contexts/CitiesContext";
+import { useEffect } from "react";
+import Spinner from "./Spinner";
+import BackButton from "./BackButton";
+
+// import { useState } from "react";
+// import { useParams } from "react-router-dom";
 
 function City() {
-  const x = useParams();
-  const { id } = x;
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(setSearchParams);
+  const { id } = useParams();
+  console.log("id", id);
+  const { getCity, currentCity, isLoading } = useCities();
 
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-  console.log(lat, lng);
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [id]
+  );
+
+  const { cityName, emoji, date, notes } = currentCity;
+
+  if (isLoading) return <Spinner />;
 
   return (
-    <>
-      <h1>Current City id = {id}</h1>;
-      <h1>
-        Position: {lat}, {lng}
-      </h1>
-    </>
+    <div className={styles.city}>
+      <div className={styles.row}>
+        <h6>City name</h6>
+        <h3>
+          <span>{emoji}</span> {cityName}
+        </h3>
+      </div>
+
+      <div className={styles.row}>
+        <h6>You went to {cityName} on</h6>
+        <p>{date}</p>
+        {/* <p>{formatDate(date || null)}</p> */}
+      </div>
+
+      {notes && (
+        <div className={styles.row}>
+          <h6>Your notes</h6>
+          <p>{notes}</p>
+        </div>
+      )}
+
+      <div className={styles.row}>
+        <h6>Learn more</h6>
+        <a
+          href={`https://en.wikipedia.org/wiki/${cityName}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Check out {cityName} on Wikipedia &rarr;
+        </a>
+      </div>
+
+      <div> {<BackButton />} </div>
+    </div>
   );
-  // TEMP DATA
-  // const currentCity = {
-  //   cityName: "Lisbon",
-  //   emoji: "🇵🇹",
-  //   date: "2027-10-31T15:59:59.138Z",
-  //   notes: "My favorite city so far!",
-  // };
-
-  // const { cityName, emoji, date, notes } = currentCity;
-
-  // return (
-  //   <div className={styles.city}>
-  //     <div className={styles.row}>
-  //       <h6>City name</h6>
-  //       <h3>
-  //         <span>{emoji}</span> {cityName}
-  //       </h3>
-  //     </div>
-
-  //     <div className={styles.row}>
-  //       <h6>You went to {cityName} on</h6>
-  //       <p>{date}</p>
-  //       {/* <p>{formatDate(date || null)}</p> */}
-  //     </div>
-
-  //     {notes && (
-  //       <div className={styles.row}>
-  //         <h6>Your notes</h6>
-  //         <p>{notes}</p>
-  //       </div>
-  //     )}
-
-  //     <div className={styles.row}>
-  //       <h6>Learn more</h6>
-  //       <a
-  //         href={`https://en.wikipedia.org/wiki/${cityName}`}
-  //         target="_blank"
-  //         rel="noreferrer"
-  //       >
-  //         Check out {cityName} on Wikipedia &rarr;
-  //       </a>
-  //     </div>
-
-  //     <div>{/* <ButtonBack /> */}</div>
-  //   </div>
-  // );
 }
 
 export default City;
