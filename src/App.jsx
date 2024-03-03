@@ -27,7 +27,7 @@ function App() {
             <Route path="cities" element={<CityList />} />
             {/* // Step-1 Creating */}
             <Route path="cities/:id" element={<City />} />
-            route
+
             <Route path="countries" element={<CountryList />} />
             <Route path="form" element={<Form />} />
           </Route>
