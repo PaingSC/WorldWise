@@ -14,8 +14,8 @@ I. Using React Router
             </BrowserRouter>
             (Note: Don't forget to import Components(main pages))
 
-        3)  Link between Routes with Link and NavLink
-            a)  Import "Link" or NavLink from "react-router-dom" 
+        3)  Link between Routes with Link and NavLink components
+            a)  Import "Link" or "NavLink" from "react-router-dom" 
                 <Link to="/">Homepage</Link>
                 <Link to="/path-name1">Component1</Link>
                 <Link to="/path-name2">Component2</Link>
@@ -28,12 +28,28 @@ I. Using React Router
                 <NavLink to="/path-name2">Component2</NavLink>
                 <NavLink to="/path-name3">Component3</NavLink>
 
+                (Note: They serve as HTML's anchor("a") tag)
+
         4)  Index Route
+            a)  Index of Homepage
                 a)  Insert "index" in the "Route" component and.
-                b)  set the "TargetComponent" to the element.
+                b)  set the "TargetComponent(Homepage Component)" to the "element".
                 <BrowserRouter>
                     <Routes>
                         <Route index element={<TergetComponent />} />
+                    </Routes>
+                </BrowserRouter>
+
+            b)  Index of inner pages
+                a)) Insert "index" attribute in the "Route" component
+                b)) Iomprt "Navigate" from "react-router-dom" and set it o the "element".
+                c)) In the component "Navigate", use "replace" attribute and "to" attribute
+                for path name of index component.
+                <BrowserRouter>
+                    <Routes>
+                        <Route index element={<Homepage />}> // Index of Homepage
+                        <Route path="app" element={<Navigate replace to="cities"  />} //Index of inner pages
+                        <Route path="cities" element={<Cities />} />
                     </Routes>
                 </BrowserRouter>
 
@@ -41,7 +57,7 @@ I. Using React Router
                 a)  Insert nested "Routes" in the opening and closing tag of "parent Route"
                 b)  set the "TargetComponent" in element
                 c)  Use "<Outlet />" component to somewhere inside the "parent component" or
-                    some other components that are the chldren of the parent route component
+                    some other components that are the children of the parent route component
                 <Route path="app" element={<AppLayout />}>
                     <Route index element={<p>LIST</p>} />
                     <Route path="cities" element={<p>List of cities</p>} />
@@ -82,6 +98,7 @@ I. Using React Router
                         "useSearchParams" is the custom hook supported by "react router"
 
                         Then, for getting the lat and lng values,
+                            const [searchParams] = useSearchParams();
                             const lat = searchParams.get("lat");
                             const lng = searchParams.get("lng");
 
