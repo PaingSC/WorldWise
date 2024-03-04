@@ -125,3 +125,12 @@ I. Using React Router
                 The "type" prop is usually used to set the variations or types of the component.
 
 
+II. Using leaflet (react-leaflet) library
+    1.  Installing 
+        1)  npm i react-leaflet leaflet
+
+    2.  Preparation
+        1)  Include Leaflet CSS file in the head section of your document:
+
+    3.  Usage
+        1)  Include Map in your component
